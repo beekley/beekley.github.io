@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: Your Name
+name: Brett Beekley
 
 # Short bio or description (displayed in the header)
-description: Web Developer from Somewhere
+description: Miscellany from me and the internet
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/beekley/beekley.github.io/master/images/brett.png
@@ -23,7 +23,7 @@ footer-links:
   flickr:
   github: beekley
   instagram:
-  linkedin: beekley
+  linkedin: brettbeekley
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: jackdriper
