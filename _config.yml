@@ -49,6 +49,9 @@ url:
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
 
+# Pagination options
+paginate: 3
+
 #
 # !! You don't need to change any of the configuration flags below !!
 #
