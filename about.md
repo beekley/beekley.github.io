@@ -4,12 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I write code. Mostly for work. Sometimes just for fun. I also brew beer and dungeon-master D&D (is that a verb?). I am [strangely nostalgic for malls](https://www.reddit.com/r/VaporwaveAesthetics/) and hope to make a game someday.
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+[Email me any time](mailto:brettbeekley@gmail.com). My inbox is quite tidy so I promise I'll at least read it.
