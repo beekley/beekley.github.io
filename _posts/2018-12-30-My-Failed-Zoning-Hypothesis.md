@@ -4,7 +4,7 @@ There's a lot of talk in CA about housing and about making zoning changes to add
 
 Increasing the options of what can be built on a property (e.g. through relaxed zoning) increases the property's value.
 
-It feels intuitive. If you have two identical assets, but you are legally allowed to do an additional thing with one of them, the "free-er" one is more valuable. I first tested this hypothesis by comparing the values of the apartment property I lived in and the single-family home next door. This should control variables: both were corner properties of similar size on the same block of the same neighborhood. One was zoned R3 (multi-unit) and the other R1 (single-family residence).
+It feels intuitive. If you have two identical assets, but you are legally allowed to do an additional thing with one of them, the "free-er" one is more valuable. I first tested this hypothesis by comparing the values of the apartment property I lived in and the single-family home next door. This should control variables: both were corner properties of similar-ish size on the same block of the same neighborhood. One was zoned R3 (multi-unit) and the other R1 (single-family residence).
 
 From Redfin (lightly rounded):
 
@@ -24,14 +24,53 @@ CurrentRoll_LandValue - Assessed value of the parcel's land without any building
 SqftLot - Size of parcel
 ```
 
-The first thing I took a look at was average land value / sqft for single and multi unit properties by ZIP code. The 9 digit ZIP would hopefully control for the location-related variables that affect property value. The following charts compare average values for ZIPs where there are at least 3 of each single and multi unit properties.
+I first looked at the average land value / sqft for single and multi unit properties by ZIP code. The 9 digit ZIP would hopefully control for the location-related variables that affect property value. The following charts compare average values for ZIPs where there are at least 3 of each single and multi unit properties.
 
-![Average land value by ZIP](https://github.com/beekley/beekley.github.io/blob/master/images/lotValue.png)
+![Average land value by ZIP](https://github.com/beekley/beekley.github.io/blob/master/images/lotValue.png?raw=true)
 
-![Comparison](https://github.com/beekley/beekley.github.io/blob/master/images/lotValueDiff.png)
+![Comparison](https://github.com/beekley/beekley.github.io/blob/master/images/lotValueDiff.png?raw=true)
 
 Unfortunately, this doesn't really support my hypothesis. There is no significant effect of unit count on lot value.
 
-One simple explanation is that the assessors don't consider zoning in their land value assessment. Another explanation is that higher-density buildings are built on lower-value land (e.g. near freeways or on major streets) even within a ZIP. Or that the value data is noisy since it might be decades since a parcel was last assessed. Finally, it could just be that the sample size (as low as n=3 for some ZIPs) is too small to get meaningful data.
+One simple explanation is that the assessors don't consider zoning in their land value assessment, which would make this experiment moot. Another explanation is that higher-density buildings are built on lower-value land (e.g. near freeways or on major streets), wiping out any gains for zone. Or that the value data is noisy since it might be decades since a parcel was last assessed. Finally, it could just be that the sample size (as low as n=3 for some ZIPs) is too small to make meaningful conclusions.
 
-This isn't necessarily the end of the story for me and the hypothesis. I think if I'm going to work on it more, I'd want to look at larger data sets (e.g. the 1+ million row LA county set) and different sources for "value". 
+This isn't necessarily the end of the story for me and the hypothesis. I think if I'm going to work on it more, I'd want to look at larger data sets (e.g. the 1+ million row LA county set) and different sources for "value".
+
+BTW, here's the SQL to get the comparison and generate those charts. It's a little ugly but does the job.
+
+```
+SELECT 
+    *
+FROM
+    (SELECT 
+        SitusZipCode,
+            COUNT(*) AS singleCount,
+            AVG(CurrentRoll_LandValue / SqftLot) AS singleAvg,
+            STDDEV(CurrentRoll_LandValue / SqftLot) AS singleStdev
+    FROM
+        sandbox.sm_assessor_2015
+    WHERE
+        GeneralUseType = 'Residential'
+            AND Units = 1
+            AND PropertyType != 'CND'
+            AND SitusZipCode IS NOT NULL
+            AND SitusZipCode != ''
+    GROUP BY SitusZipCode) AS single
+        INNER JOIN
+    (SELECT 
+        SitusZipCode,
+            COUNT(*) AS multiCount,
+            AVG(CurrentRoll_LandValue / SqftLot) AS multiAvg,
+            STDDEV(CurrentRoll_LandValue / SqftLot) AS multiStdev
+    FROM
+        sandbox.sm_assessor_2015
+    WHERE
+        GeneralUseType = 'Residential'
+            AND Units > 1
+            AND PropertyType != 'CND'
+            AND SitusZipCode IS NOT NULL
+            AND SitusZipCode != ''
+    GROUP BY SitusZipCode) AS multi ON multi.SitusZipCode = single.SitusZipCode
+WHERE
+    multiCount >= 3 AND singleCount >= 3
+```
