@@ -26,6 +26,10 @@ SqftLot - Size of parcel
 
 The first thing I took a look at was average land value / sqft for single and multi unit properties by ZIP code. The 9 digit ZIP would hopefully control for the location-related variables that affect property value. The following charts compare average values for ZIPs where there are at least 3 of each single and multi unit properties.
 
+![Average land value by ZIP](https://github.com/beekley/beekley.github.io/blob/master/images/lotValue.png)
+
+![Comparison](https://github.com/beekley/beekley.github.io/blob/master/images/lotValueDiff.png)
+
 Unfortunately, this doesn't really support my hypothesis. There is no significant effect of unit count on lot value.
 
 One simple explanation is that the assessors don't consider zoning in their land value assessment. Another explanation is that higher-density buildings are built on lower-value land (e.g. near freeways or on major streets) even within a ZIP. Or that the value data is noisy since it might be decades since a parcel was last assessed. Finally, it could just be that the sample size (as low as n=3 for some ZIPs) is too small to get meaningful data.
