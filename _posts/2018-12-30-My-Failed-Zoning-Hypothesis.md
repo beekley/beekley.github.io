@@ -13,4 +13,21 @@ From Redfin (lightly rounded):
 | R3       | 11750              | 11.0              |  936          | 527                             |
 | R1       | 7150               | 2.8               |  391          | 289                             |
 
-Each square foot of lot of the R3 property is worth 2.4x the R1 property next door. However, this ignores the value/cost of the building itself, [which may be around $200/sqft in LA](https://www.biggerpockets.com/forums/24/topics/160796-new-construction-costs-for-apartment-buildings-in-la-county). When we subtract the cost to build the building, the increase becomes about 1.8x. Still a huge gain just for being zoned higher.
+Each square foot of lot of the R3 property is worth 2.4x the R1 property next door. However, this ignores the value/cost of the building itself, [which may be around $200/sqft in LA](https://www.biggerpockets.com/forums/24/topics/160796-new-construction-costs-for-apartment-buildings-in-la-county) (note: this is a strong assumption, but I feel it favors the R1 property, which is 15 years newer and subjectively "nicer"-- therefore likely more expensive per sqft). When we subtract the cost to build the building, the increase becomes about 1.8x. Still a huge gain just for being zoned higher. 
+
+Now, to apply the same principle to a larger data set. The [LA County Assessor provides data](https://data.lacounty.gov/api/views/) on every parcel of land in LA. I grabbed the Santa Monica data set (`Assessor_Parcels_Data_-_2015`) since it was a manageable ~24k rows, and loaded it into mysql. It didn't actually contain parcel size and the assessed values were form 2015, so I wrote [a small script](https://github.com/beekley/sandbox/blob/master/zone-values/index_2.js) to get the parcel details in batches from the assessor's API. The data was filtered for residential properties (`GeneralUseType = 'Residential'`) and non-condos (`PropertyType != 'CND'`). In the end, there were about 7321 single-family residences (`Units = 1`) and 4048 multi-unit properties (`Units > 1`), with the following key data for each parcel:
+
+```
+Units - Number of units on the parcel
+SitusZipCode - 9 digit ZIP
+CurrentRoll_LandValue - Assessed value of the parcel's land without any building
+SqftLot - Size of parcel
+```
+
+The first thing I took a look at was average land value / sqft for single and multi unit properties by ZIP code. The 9 digit ZIP would hopefully control for the location-related variables that affect property value. The following charts compare average values for ZIPs where there are at least 3 of each single and multi unit properties.
+
+Unfortunately, this doesn't really support my hypothesis. There is no significant effect of unit count on lot value.
+
+One simple explanation is that the assessors don't consider zoning in their land value assessment. Another explanation is that higher-density buildings are built on lower-value land (e.g. near freeways or on major streets) even within a ZIP. Or that the value data is noisy since it might be decades since a parcel was last assessed. Finally, it could just be that the sample size (as low as n=3 for some ZIPs) is too small to get meaningful data.
+
+This isn't necessarily the end of the story for me and the hypothesis. I think if I'm going to work on it more, I'd want to look at larger data sets (e.g. the 1+ million row LA county set) and different sources for "value". 
