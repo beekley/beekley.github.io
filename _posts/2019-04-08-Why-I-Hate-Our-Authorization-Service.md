@@ -2,6 +2,8 @@ Hi, my name is Brett Beekley. I'm a software engineer at Science 37. And I hate 
 
 I focus mainly on the backend of our platform-- its data, its API, and especially the services that power them. I treat the services like they are my children. I love them. I'm proud of them. I nurture and let them grow. And as a parent must, I don't have favorites. Except the Authorization service. I hate our Authorization service.
 
+### Background
+
 Before we get into why Authorization is a no good, bad service, let's talk about how we got there. I spoke with our historians and they found records from before that service. It's the ancient year of 2017. We had one service that handled everything (a "monolith", ick!). It took every request. It owned all of our data. Like many things, authorization was simple:
 
 1. A user would log into the monolith and get a token for their session
@@ -16,7 +18,11 @@ With distributed services, distributed APIs and distrubuted data, comes a need f
 
 And thus our problems began.
 
+### Big queries for small data
+
 First, we decided to use a very normalized model to store that data and the relations between them. The only query the service would make (get the actions for a user's roles) performed a bunch of joins just to query tables that had, at most, dozens of rows in them.
+
+### Painful update process
 
 Next, we had no upsert API, so the only way to get/update Authorization data was to write [`db-migrate`](https://www.npmjs.com/package/db-migrate) scripts. These were SQL queries for how to make/revert the update and, since the data was distributed across several tables, they looked like this:
 
@@ -57,7 +63,11 @@ INSERT INTO RolePermission (`roleId`, `permissionId`) VALUES
 
 Incomprehsenible. To code reviewers, to product managers who define the access controle rules, to even the author 5 minutes after writing it. Also there's a similar `down` script that reverts it. Hope you got all of those relations right in both!
 
+### Complicated infrastructure
+
 Finally, it is its own service + DB. That's more infrastructure to deploy, maintain, troubleshoot. Fortunately, our deployments are pretty automated so it's not *too much* work. But we've had nonzero problems related to deployment, especially to developers/testers own environments. We should have zero for something that serves a few kb of static data. 
+
+### Conclusion
 
 Really it all comes down to overengineering a solution without identifying the real problem and its scope. It's easy to say the problem is "We need a service to manage Authorization data", when we should have said "Our distributed services need to know the subset of the <100 total actions that a requestor has".
 
