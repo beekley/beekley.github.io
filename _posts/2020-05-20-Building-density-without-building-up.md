@@ -2,11 +2,11 @@ Los Angeles and CA have [a housing shortage](https://en.wikipedia.org/wiki/Calif
 
 There has been [pushback](https://www.curbed.com/2020/2/7/21125100/sb-50-california-bill-fail) against increasing the allowed density of residential units. A major fear has been that increasing supply means increasing density and changing the character of single-family neighborhoods. ["Manhattanization"](https://en.wikipedia.org/wiki/Manhattanization) is often used to describe efforts to increase density.
 
-The analysis below shows that Los Angeles can eliminate its housing shortage without significantly changing the vast majority of residential neighborhoods.
+**The analysis below shows that Los Angeles can eliminate its housing shortage without significantly changing the vast majority of residential neighborhoods.**
 
 There are 1,790k single family homes in LA County, and 24k multifamily buildings containing 1,560k units, for a total of 3,350k units [1]. The LA housing shortage is described as [about 517k units](https://la.curbed.com/2019/5/21/18634232/los-angeles-affordable-housing-shortage-how-much-need).
 
-Fourplexes can blend in with single-family homes due to their small size and general conformance with existing single-family zoning laws (this is the basis for [SB 902](https://www.kqed.org/news/11805850/sen-wiener-wants-to-abolish-single-family-only-neighborhoods-in-california), which aims to allow 2-4plexes across the state). A [quick image search shows fourplexes](https://www.google.com/search?tbm=isch&q=los+angeles+fourplex) look like large single family homes. If 173k single family homes were converted to fourplexes, 519k units would be added, eliminating the housing shortage. That's a little under 1 in 10 houses, or about one fourplex per block. This isn't a significant change to any neighborhood.
+Fourplexes can blend in with single-family homes due to their small size and general conformance with existing single-family zoning laws (this is the basis for [SB 902](https://www.kqed.org/news/11805850/sen-wiener-wants-to-abolish-single-family-only-neighborhoods-in-california), which aims to allow 2-4plexes across the state). A [quick image search shows fourplexes](https://www.google.com/search?tbm=isch&q=los+angeles+fourplex) look like large single family homes. **If 173k single family homes were converted to fourplexes, 519k units would be added, eliminating the housing shortage**. That's a little under 1 in 10 houses, or about one fourplex per block. This isn't a significant change to any neighborhood.
 
 #### Graph showing the number of buildings in LA county before and after building 519k units of quadplex.
 ![a](https://github.com/beekley/beekley.github.io/blob/master/images/r1-rd2.png?raw=true)
@@ -17,12 +17,11 @@ But that is assuming an even distribution of supply. If we want to improve traff
 * The average single family home in CA is 0.15 acre, or 6500 sqft.
 * In a vastly simplified calculation, each unit of single-family home could be converted to 33 units of R5 housing.
 * It would take 16k home->tower conversions to address the shortage.
-* That would cover an area of 2400 acres, or the area west of Lincoln in Santa Monica + Venice.
+
+**We could solve the LA housing shortage building 2400 acres of residential towers**, which is about [the area west of Lincoln in Santa Monica + Venice](https://github.com/beekley/beekley.github.io/blob/master/images/area.png?raw=true). Putting high density towers near job centers could significantly change the surrounding area, the small number of changes (<1% of R1 buildings) means a vast minority of LA neighborhoods would be affected. Especially if it's spread out across the 3 million acres of LA County.
 
 #### Graph showing the number of buildings in LA county before and after converting 16k R1 homes to R5 housing.
 ![a](https://github.com/beekley/beekley.github.io/blob/master/images/r1-r5.png?raw=true)
-
-Though putting high density towers near job centers could significantly change the surrounding area, the small number of changes (<1% of R1 buildings) means a vast minority of LA neighborhoods would be affected.
 
 #### Graph showing the number of buildings in the "Westside" before and after converting 16k R1 homes to R5 housing.
 ![a](https://github.com/beekley/beekley.github.io/blob/master/images/r1-r5_sm.png?raw=true)
