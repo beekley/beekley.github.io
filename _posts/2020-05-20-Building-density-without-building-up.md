@@ -19,12 +19,12 @@ But that is assuming an even distribution of supply. If we want to improve traff
 * It would take 16k home->tower conversions to address the shortage.
 * That would cover an area of 2400 acres, or the area west of Lincoln in Santa Monica + Venice.
 
-#### Graph showing the number of buildings in LA county before and after building 16k units of R5 housing.
+#### Graph showing the number of buildings in LA county before and after converting 16k R1 homes to R5 housing.
 ![a](https://github.com/beekley/beekley.github.io/blob/master/images/r1-r5.png?raw=true)
 
 Though putting high density towers near job centers could significantly change the surrounding area, the small number of changes (<1% of R1 buildings) means a vast minority of LA neighborhoods would be affected.
 
-#### Graph showing the number of buildings in the "Westside" before and after building 16k units of R5 housing.
+#### Graph showing the number of buildings in the "Westside" before and after converting 16k R1 homes to R5 housing.
 ![a](https://github.com/beekley/beekley.github.io/blob/master/images/r1-r5_sm.png?raw=true)
 
 Of course, these are both extreme cases. Skyscrapers are never going to appear in Venice overnight (or possibly ever), nor will a hundred thousand homes get torn down for more density. Medium-density is the "missing middle" that enables walkable neighborhoods and would require much less upzoning than the first case, with a lower impact than the second.
