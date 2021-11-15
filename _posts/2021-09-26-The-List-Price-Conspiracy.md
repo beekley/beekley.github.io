@@ -11,7 +11,7 @@ That sounded strange to me-- I imagine an efficient market would make list price
 I went to Zillow for the source data, since they aggregate sale, listing, and change data from a variety of sources. Of course it's not 100% complete, but I don't need it to be perfect. Zillow unfortunately doesn't provide an API for this data, and their website is structured difficultly for scraping. I got a little script going that worked most of the time. But needed to be babysat enough that I only got a few donzen data points before getting tired of running it.
 
 ```
-onst SOLD = 'Sold';
+const SOLD = 'Sold';
 const LISTED = 'Listed for sale';
 const CHANGED = 'Price change';
 const states = [SOLD, LISTED, CHANGED]
@@ -58,6 +58,11 @@ The result was a list of addresses with their recent sale and listing prices.
 I scraped 34 single-family, detached home in the $800k-1.5M range in my neighborhood sold within the past ~month. Of those, 26 have both sold and listing data. I compared the last sold price with the highest listing price since its second most recent sale. **The median home was sold for 4% less than its highest listing price**. The 10th-percentile was 15% below listing, and the 90th-percentile was 13% above.
 
 I also looked at the difference between the last sold price and the immediately preceding listing price. The median home was sold for exactly the same as the last listing price (10%ile: 7% below, 90%ile: 13% above).
+
+Edit: This data is corroborated by Redfin, which publishes their own [sale-to-list ratio](https://www.redfin.com/definition/saleto-list-ratio). The ratio for my neighborhood is 98%, or the median sale price is 0.98x the median last-list price. Two notes about this:
+
+1. It's very neighborhood-specific-- my few blocks had a different value then a lightly broader definition, which was 100.3%. These are always pretty low sample-size sets.
+2. Redfin compare sale the **most recent list** price. Above, I used the highest list price since the last sale, since that better captures the spirit of my hypothesis about homes selling for less than they (were once) asked. Redfin's number will therefore likely be higher than my equivalent since it drops that data.
 
 ## Conclusion
 
