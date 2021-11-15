@@ -61,8 +61,8 @@ I also looked at the difference between the last sold price and the immediately 
 
 Edit: This data is corroborated by Redfin, which publishes their own [sale-to-list ratio](https://www.redfin.com/definition/saleto-list-ratio). The ratio for my neighborhood is 98%, or the median sale price is 0.98x the median last-list price. Two notes about this:
 
-1. It's very neighborhood-specific-- my few blocks had a different value then a lightly broader definition, which was 100.3%. These are always pretty low sample-size sets.
-2. Redfin compare sale the **most recent list** price. Above, I used the highest list price since the last sale, since that better captures the spirit of my hypothesis about homes selling for less than they (were once) asked. Redfin's number will therefore likely be higher than my equivalent since it drops that data.
+1. It's very neighborhood-specific-- my few blocks had a different value then a lightly broader definition, which was 100.3%. These are still pretty low sample-size sets.
+2. Redfin compares sale prices to the **most recent list** price. Above, I used the highest list price since the last sale, since that better captures the spirit of my hypothesis about homes selling for less than they (were once) asked. Redfin's number will therefore favor sale price since the list price will be closer to a "realistic" number.
 
 ## Conclusion
 
