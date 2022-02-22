@@ -4,7 +4,7 @@ I made [another](/It's-a-game!) game! This one is a card game where you play as 
 * [Github Project](https://github.com/beekley/plunder)
 * [Tabletop Simulator Mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2759806101)
 
-![Steam Workshop](https://github.com/beekley/beekley.github.io/blob/master/images/Screen%20Shot%202022-02-22%20at%207.56.31%20AM.png?raw=true)
+![Steam Workshop](https://github.com/beekley/beekley.github.io/blob/master/images/plunder.png?raw=true)
 
 Since first watching streamers play Escape from Tarkov, I've been in love with its unique mechanic of the "stash". Players have a collection of gear in their stash that they use to equip their character before a raid. If the player dies, they lose everything they brought in. But if they live, they get even more stuff to put in their stash for future raids.
 
